@@ -4,6 +4,14 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-google-analytics",
@@ -32,6 +40,21 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`open sans`, `roboto\:100,200,300,400,400i,700`],
+        display: "swap",
+      },
     },
   ],
 };
