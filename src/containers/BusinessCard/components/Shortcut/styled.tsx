@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const IconContainer = styled.div`
   padding: 15px;
   margin-bottom: 2px;
   width: max-content;
   border-radius: 16px;
   background: #2096a1;
   border: none;
-  outline: none;
 `;
 
 export const ButtonContainer = styled.div`

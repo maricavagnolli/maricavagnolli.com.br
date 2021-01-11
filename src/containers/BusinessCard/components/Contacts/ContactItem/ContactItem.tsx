@@ -17,6 +17,7 @@ function ContactItem({ Icon, title, link }: Props) {
       <a
         href={link}
         target="_blank"
+        rel="noopener"
         style={{ color: "#000", textDecoration: "none", marginLeft: "8px" }}
       >
         <Typography variant="body2" style={{ fontWeight: 200 }}>

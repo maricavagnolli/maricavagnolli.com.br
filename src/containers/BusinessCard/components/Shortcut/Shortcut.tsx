@@ -14,8 +14,15 @@ function Shortcut({ Icon, title, link }: Props) {
   return (
     <div style={{ minWidth: "60px" }}>
       <Styled.ButtonContainer>
-        <a href={link} target="_blank">
-          <Styled.Button>{<Icon style={{ fill: "#fff" }} />}</Styled.Button>
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener"
+          aria-label={`Abrir o ${title}`}
+        >
+          <Styled.IconContainer>
+            {<Icon style={{ fill: "#fff" }} />}
+          </Styled.IconContainer>
         </a>
         <Typography variant="caption" style={{ alignSelf: "center" }}>
           {title}

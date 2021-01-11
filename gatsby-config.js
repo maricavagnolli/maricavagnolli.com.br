@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: "Nutricionista Mariana Cavagnolli",
-    titleTemplate: "%s · Cure e previna doenças com a nutrição",
-    description:
-      "Hogwarts Potions master, Head of Slytherin house and former Death Eater.",
+    titleTemplate: "%s · Nutricionista Mariana Cavagnolli",
+    description: "Cure e previna doenças com a nutrição.",
     url: "https://www.maricavagnolli.com.br",
     author: "Nutricionista Mariana Cavagnolli",
   },
