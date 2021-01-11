@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImageFixedProps } from "gatsby-image";
 import BusinessCard from "../containers/BusinessCard";
+import SEO from "../components/seo";
 
 interface Props {
   data: {
@@ -13,7 +14,12 @@ interface Props {
 
 function ContactPage({ data }: Props) {
   const { file } = data;
-  return <BusinessCard profilePhoto={file.childImageSharp} />;
+  return (
+    <>
+      <SEO title="Cartão de visitas" />
+      <BusinessCard profilePhoto={file.childImageSharp} />
+    </>
+  );
 }
 
 export const query = graphql`

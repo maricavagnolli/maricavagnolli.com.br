@@ -1,6 +1,11 @@
 module.exports = {
   siteMetadata: {
     title: "Nutricionista Mariana Cavagnolli",
+    titleTemplate: "%s · Cure e previna doenças com a nutrição",
+    description:
+      "Hogwarts Potions master, Head of Slytherin house and former Death Eater.",
+    url: "https://www.maricavagnolli.com.br",
+    author: "Nutricionista Mariana Cavagnolli",
   },
   plugins: [
     "gatsby-plugin-netlify-cms",
@@ -47,6 +52,18 @@ module.exports = {
         rule: {
           include: /images/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
