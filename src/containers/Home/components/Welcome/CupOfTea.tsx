@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Timeline, Tween } from "react-gsap";
+import { Timeline, Tween, PlayState } from "react-gsap";
+import useOnScreen from "../../../../hooks/useOnScreen";
 
 const CupOfTeaIllustration = React.forwardRef((props, targets: any) => (
   <svg width="293" height="263" viewBox="0 0 293 263" fill="none">
@@ -177,35 +178,54 @@ const CupOfTeaIllustration = React.forwardRef((props, targets: any) => (
 ));
 
 function CupOfTea() {
+  const svgRef = React.useRef(null);
+  const onScreen = useOnScreen(svgRef);
+  const [playState, setPlayState] = React.useState(PlayState.stop);
+
+  React.useEffect(() => {
+    if (onScreen) setPlayState(PlayState.play);
+  }, [onScreen]);
+
   return (
-    <Timeline target={<CupOfTeaIllustration />}>
-      <Tween
-        from={{ y: 180 }}
-        to={{ y: 0 }}
-        duration={2}
-        target="water"
-        position={0}
-      />
-      <Tween from={{ y: 10 }} duration={2} target="tea_bag" position={1} />
-      <Tween
-        from={{ opacity: 0, y: 50 }}
-        to={{ opacity: 1, y: 0 }}
-        target="bubble1"
-        position={2}
-      />
-      <Tween
-        from={{ opacity: 0, y: 40 }}
-        to={{ opacity: 1, y: 0 }}
-        target="bubble2"
-        position={3}
-      />
-      <Tween
-        from={{ opacity: 0, y: 10 }}
-        to={{ opacity: 1, y: 0 }}
-        target="bubble3"
-        position={4}
-      />
-    </Timeline>
+    <div ref={svgRef}>
+      <Timeline playState={playState} target={<CupOfTeaIllustration />}>
+        <Tween
+          from={{ y: 180 }}
+          to={{ y: 0 }}
+          duration={2}
+          target="water"
+          position={0}
+        />
+        <Tween from={{ y: 10 }} duration={2} target="tea_bag" position={1} />
+        <Tween
+          from={{ opacity: 0, y: 50 }}
+          to={{ opacity: 1, y: 0 }}
+          target="bubble1"
+          position={2}
+        />
+        <Tween
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          target="bubble2"
+          position={3}
+        />
+        <Tween
+          from={{ opacity: 0, y: 10 }}
+          to={{ opacity: 1, y: 0 }}
+          target="bubble3"
+          position={4}
+        />
+        <Tween
+          from={{ rotation: 0 }}
+          to={{ rotation: 3 }}
+          duration={2}
+          target="tea_bag"
+          position={2}
+          repeat={-1}
+          yoyo
+        />
+      </Timeline>
+    </div>
   );
 }
 
