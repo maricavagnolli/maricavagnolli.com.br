@@ -16,7 +16,7 @@ function ContactPage({ data }: Props) {
   const { file } = data;
   return (
     <>
-      <SEO title="Cartão de visitas" />
+      <SEO title="Entre em contato" />
       <BusinessCard profilePhoto={file.childImageSharp} />
     </>
   );

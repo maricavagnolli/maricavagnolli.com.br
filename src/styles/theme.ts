@@ -19,7 +19,7 @@ export const theme = createMuiTheme({
       main: "#FFD400",
     },
     background: {
-      default: "#fff",
+      default: "#FAFAFA",
     },
   },
 });

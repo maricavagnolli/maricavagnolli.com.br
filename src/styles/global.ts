@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle`
   dl, dt, dd, ol, ul, li,
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
@@ -21,16 +21,13 @@ const GlobalStyles = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
-  article, aside, details, figcaption, figure,
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
-  html {
-    height: 100%;
-  }
   body {
     line-height: 1;
-    height: 100%;
   }
   ol, ul {
     list-style: none;
@@ -47,32 +44,14 @@ const GlobalStyles = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
-  * {
-    box-sizing: border-box;
-  }
-  img {
-    display: block;
-  	width: 100%;
-  	height: auto;
-  }
-  body.dark {
-    --mainBackground: #382D93;
-    --darkBackground: #232323;
-    --darkerBackground: #121212;
-    --fontColor: #ffffff;
-  }
-  body.light {
-    --mainBackground: #ffffff;
-    --darkBackground: #A8FBAF;
-    --darkerBackground: #AC9FF0;
-    --fontColor: #000000;
-  }
   body {
-    background: var(--mainBackground);
-    color: var(--fontColor)
-    line-height: 1;
-    font-size: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: Roboto;
+    font-style: normal;
+    line-height: 32px;
+    letter-spacing: 0em;
   }
 `;
 
