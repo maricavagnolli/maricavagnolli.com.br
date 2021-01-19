@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Grid, TextField } from "@material-ui/core";
+import { Grid, TextField, Typography } from "@material-ui/core";
 import addToMailChimp from "gatsby-plugin-mailchimp";
 import Container from "../../../../components/Container";
 import NewsletterIllustration from "../../../../images/newsletter.svg";
@@ -20,14 +20,60 @@ const CustomNewsletterIllustration = styled(NewsletterIllustration)`
   align-self: flex-end;
 `;
 
+type Messages = {
+  success: {
+    type: "primary" | "error";
+    text: string;
+  };
+  error: {
+    type: "primary" | "error";
+    text: string;
+  };
+  warning: {
+    type: "primary" | "error";
+    text: string;
+  };
+};
+
+const messages = {
+  success: {
+    type: "primary",
+    text: "Você se inscreveu com sucesso para receber nossas novidades!",
+  },
+  error: {
+    type: "error",
+    text:
+      "Ops! Parece que que tivemos algum erro... Por favor, tente novamente.",
+  },
+  warning: {
+    type: "error",
+    text:
+      "Você deve ter recebido um email para confirmar sua inscrição. Caso não receba, tente novamente em alguns instantes por favor.",
+  },
+} as Messages;
+
 function Newsletter(props: Props) {
   const {} = props;
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [result, setResult] = React.useState<
+    "success" | "error" | "warning" | ""
+  >("");
+  const [sending, setSending] = React.useState<boolean>(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const elements = (event.currentTarget.elements as unknown) as FormElements;
-    const email = elements.email.value;
-    const name = elements.name.value;
-    addToMailChimp(email, { FNAME: name });
+    try {
+      setSending(true);
+      const elements = (event.currentTarget
+        .elements as unknown) as FormElements;
+      const email = elements.email.value;
+      const name = elements.name.value;
+      addToMailChimp(email, { FNAME: name });
+      setResult("success");
+    } catch {
+      setResult("error");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -60,7 +106,19 @@ function Newsletter(props: Props) {
                 fullWidth
                 style={{ margin: "24px 0 32px 0" }}
               />
-              <Button variant="contained" color="primary" type="submit">
+              {result && (
+                <div style={{ marginBottom: 24 }}>
+                  <Typography variant="body1" color={messages[result].type}>
+                    {messages[result].text}
+                  </Typography>
+                </div>
+              )}
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={Boolean(sending)}
+              >
                 Cadastrar
               </Button>
             </Styled.NewsletterFormContainer>
