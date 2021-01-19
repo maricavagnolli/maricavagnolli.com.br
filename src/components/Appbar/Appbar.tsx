@@ -61,7 +61,7 @@ function Appbar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/">
+          <Link to="/" aria-label="Ir para página inicial">
             <Logo />
           </Link>
         </Toolbar>
