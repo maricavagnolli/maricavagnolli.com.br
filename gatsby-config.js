@@ -123,7 +123,7 @@ module.exports = {
                 title
                 description
                 siteUrl: url
-                author
+                site_url: url
               }
             }
           }
@@ -139,7 +139,6 @@ module.exports = {
                     site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
                   guid:
                     site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
                 });
               });
             },
@@ -164,7 +163,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Mariana Cavagnolli RSS Feed",
+            title: "Feed - Nutricionista Mariana Cavagnolli",
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
