@@ -162,7 +162,7 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
+            output: "/feed.xml",
             title: "Feed - Nutricionista Mariana Cavagnolli",
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of

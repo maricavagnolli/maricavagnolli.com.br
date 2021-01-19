@@ -75,7 +75,14 @@ function SEO({ description, lang = "pt-BR", title, image }: Props) {
         { name: `twitter:description`, content: seo.description },
         { name: `twitter:image:alt`, content: seo.description },
       ]}
-    />
+    >
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Nutricionista Mariana Cavagnolli"
+        href="/feed.xml"
+      />
+    </Helmet>
   );
 }
 
