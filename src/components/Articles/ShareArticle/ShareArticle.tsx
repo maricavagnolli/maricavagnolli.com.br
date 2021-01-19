@@ -16,7 +16,16 @@ const formatTweetParams = (url: string, title: string) => {
 };
 
 function ShareArticle({ link, title, description }: ShareArticleProps) {
-  const hasShareNavigator = Boolean(navigator.share !== undefined);
+  const [hasShareNavigator, setHasShareNavigator] = React.useState<boolean>(
+    false
+  );
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasShareNavigator(Boolean(navigator.share !== undefined));
+    }
+  }, []);
+
   return (
     <Styled.ShareArticle>
       <Styled.Rect />
