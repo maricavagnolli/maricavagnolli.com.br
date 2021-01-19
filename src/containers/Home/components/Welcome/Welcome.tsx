@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Grid from "@material-ui/core/Grid";
-import Container from "../Container";
+import Container from "../../../../components/Container";
 import SocialNetwork from "../../../../components/SocialNetwork";
 import CupOfTea from "./CupOfTea";
 import { Typography } from "@material-ui/core";

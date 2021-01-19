@@ -2,6 +2,7 @@ import * as React from "react";
 import { Theme, makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, IconButton } from "@material-ui/core";
 import { Menu as MenuIcon } from "@material-ui/icons";
+import { Link } from "gatsby";
 import Logo from "../Logo";
 
 interface Props {}
@@ -23,7 +24,7 @@ function Appbar(props: Props) {
   const {} = props;
 
   return (
-    <AppBar position="static" color="transparent">
+    <AppBar position="sticky" color="default">
       <Toolbar>
         <IconButton
           edge="start"
@@ -33,7 +34,9 @@ function Appbar(props: Props) {
         >
           <MenuIcon />
         </IconButton>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </Toolbar>
     </AppBar>
   );

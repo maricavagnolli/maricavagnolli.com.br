@@ -13,18 +13,20 @@ interface Props {
   backgroundFixed?: boolean;
   fontColor?: string;
   size?: "sm" | "md" | "lg";
+  titleSize?: "sm" | "md";
 }
 
 const Content: React.FC<Props> = ({
   title,
+  titleSize = "sm",
   fontColor = "#000000",
   children,
 }) => (
   <>
     {title && (
       <Typography
-        variant="h4"
-        style={{ fontFamily: "Sacramento", color: fontColor }}
+        variant={titleSize === "sm" ? "h4" : "h3"}
+        style={{ fontFamily: "Sacramento", color: fontColor, marginBottom: 32 }}
       >
         {title}
       </Typography>

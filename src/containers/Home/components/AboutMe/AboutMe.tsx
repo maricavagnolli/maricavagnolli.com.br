@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Grid from "@material-ui/core/Grid";
-import Container from "../Container";
+import Container from "../../../../components/Container";
 import * as Styled from "./styled";
 
 interface Props {}
@@ -40,7 +40,7 @@ function AboutMe(props: Props) {
       backgroundFixed
       fontColor="#FFF"
     >
-      <Grid container style={{ color: "#fff" }}>
+      <Grid container style={{ color: "#fff" }} spacing={2}>
         <Grid
           item
           xs={12}
@@ -58,10 +58,10 @@ function AboutMe(props: Props) {
           faculdade. Sou apaixonada por nutrição infantil e atualmente sou pós
           graduanda em Fisiologia e Bioquímica da Nutrição pela Universidade São
           Camilo. Atuo como nutricionista pela Clínica Pró-Saúde em São Bernardo
-          do Campo junto com uma equipe maravilhosa.Meu objetivo é sempre trazer
-          uma nutrição humanizada, sem terrorismo ou radicalismo, quero que os
-          pacientes saiam do consultório sabendo comer de uma forma equilibrada
-          e mais saudável, sem medo da comida.
+          do Campo junto com uma equipe maravilhosa e meu objetivo é sempre
+          trazer uma nutrição humanizada, sem terrorismo ou radicalismo. Quero
+          que os pacientes saiam do consultório sabendo comer de uma forma
+          equilibrada e mais saudável, sem ter medo da comida.
         </Grid>
       </Grid>
     </Container>
