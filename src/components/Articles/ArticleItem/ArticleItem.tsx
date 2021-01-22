@@ -24,17 +24,19 @@ function ArticleItem(props: Props) {
       ref={hoverRef}
       large={large}
       onClick={() => {
-        navigate(`/blog/${slug}`);
+        navigate(`/blog/item/${slug}`);
       }}
     >
-      <Image
-        fluid={image}
-        style={{
-          height: 214,
-          borderBottom: "1px solid #e4e4e4",
-          width: large ? "216px" : "auto",
-        }}
-      />
+      <div>
+        <Image
+          fluid={image}
+          style={{
+            height: 214,
+            borderBottom: "1px solid #e4e4e4",
+            width: large ? "216px" : "auto",
+          }}
+        />
+      </div>
       <div style={{ position: "relative", height: large ? "auto" : 117 }}>
         <Styled.CardDetails large={large}>
           <Typography

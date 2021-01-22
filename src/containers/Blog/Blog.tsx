@@ -1,10 +1,11 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Grid } from "@material-ui/core";
-import ArticleSection from "./components/ArticleSection";
+import { Grid, Typography } from "@material-ui/core";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Container from "../../components/Container";
-import theme from "../../styles/theme";
-import useWindowSize from "../../hooks/useWindowSize";
+import Article from "../../components/Articles/ArticleItem";
+import { ArticleProps } from "../../containers/Home/components/Articles/Articles";
 
 interface Props {}
 
@@ -16,9 +17,10 @@ const query = graphql`
         frontmatter: { category: { eq: "receitas" } }
       }
       sort: { fields: frontmatter___date, order: DESC }
+      limit: 3
     ) {
       recipes: edges {
-        recipe: node {
+        article: node {
           id
           slug
           timeToRead
@@ -69,15 +71,23 @@ const query = graphql`
   }
 `;
 
+type StaticQueryProps = {
+  recipesData: {
+    recipes: [ArticleProps];
+  };
+  articlesData: {
+    articles: [ArticleProps];
+  };
+};
+
 function Blog(props: Props) {
   const {} = props;
   const {
     recipesData: { recipes },
     articlesData: { articles },
-  } = useStaticQuery(query);
+  } = useStaticQuery<StaticQueryProps>(query);
   const hasRecipes = Boolean(recipes.length);
-  const size = useWindowSize();
-  const isLargeScreen = (size?.width ?? 0) > theme.breakpoints.width("md");
+  const hasArticles = Boolean(articles.length);
 
   return (
     <main>
@@ -93,19 +103,61 @@ function Blog(props: Props) {
           dia, além de alguns artigos para você melhorar cada vez mais sua
           qualidade de vida
         </p>
-        <Grid container style={{ marginTop: 56 }}>
+        <Grid container style={{ marginTop: 56 }} spacing={4}>
           {hasRecipes && (
-            <Grid item xs={12} sm={6} md={4}>
-              <ArticleSection title="Receitas" articles={recipes} />
-            </Grid>
+            <>
+              <Grid item xs={12}>
+                <Typography variant="h5">Receitas</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Carousel
+                  showThumbs={false}
+                  infiniteLoop
+                  swipeable
+                  emulateTouch
+                  autoPlay
+                  interval={6000}
+                  showStatus={false}
+                >
+                  {recipes.map(({ article }) => (
+                    <div key={article.id}>
+                      <Article
+                        title={article.frontmatter.title}
+                        tag={article.frontmatter.category}
+                        image={
+                          article.frontmatter.featuredImage.childImageSharp
+                            .fluid
+                        }
+                        description={article.frontmatter.description}
+                        slug={article.slug}
+                        large
+                      />
+                    </div>
+                  ))}
+                </Carousel>
+              </Grid>
+            </>
           )}
-          <Grid item xs={12} sm={hasRecipes ? 6 : 12} md={hasRecipes ? 8 : 12}>
-            <ArticleSection
-              title="Artigos e Dicas da nutri"
-              articles={articles}
-              large={isLargeScreen}
-            />
-          </Grid>
+          {hasArticles && (
+            <>
+              <Grid item xs={12}>
+                <Typography variant="h5">Artigos e Dicas da nutri</Typography>
+              </Grid>
+              {articles.map(({ article }) => (
+                <Grid item xs={12} sm={6} md={4} key={article.id}>
+                  <Article
+                    title={article.frontmatter.title}
+                    tag={article.frontmatter.category}
+                    image={
+                      article.frontmatter.featuredImage.childImageSharp.fluid
+                    }
+                    description={article.frontmatter.description}
+                    slug={article.slug}
+                  />
+                </Grid>
+              ))}
+            </>
+          )}
         </Grid>
       </Container>
     </main>

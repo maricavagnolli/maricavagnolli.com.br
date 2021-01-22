@@ -47,7 +47,7 @@ function Menu({ transitionState }: any) {
           style={{
             display: "flex",
             flexDirection: "row",
-            margin: "16px 0",
+            margin: "8px 0",
             height: "56px",
           }}
         >
@@ -63,7 +63,7 @@ function Menu({ transitionState }: any) {
                   to={route}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <Typography variant="h3" color="textPrimary">
+                  <Typography variant="h4" color="textPrimary">
                     {label}
                   </Typography>
                 </Link>

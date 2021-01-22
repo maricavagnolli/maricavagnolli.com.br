@@ -7,7 +7,7 @@ function Logo() {
     <svg
       id="logo"
       viewBox="0 0 600 90"
-      style={{ width: "300px", maxWidth: "90vw" }}
+      style={{ width: "300px", maxWidth: "75vw" }}
     >
       <Tween
         from={{ opacity: 0 }}

@@ -67,8 +67,9 @@ function Newsletter(props: Props) {
         .elements as unknown) as FormElements;
       const email = elements.email.value;
       const name = elements.name.value;
-      addToMailChimp(email, { FNAME: name });
-      setResult("success");
+      const { result } = await addToMailChimp(email, { FNAME: name });
+      event.currentTarget.reset();
+      setResult(result);
     } catch {
       setResult("error");
     } finally {

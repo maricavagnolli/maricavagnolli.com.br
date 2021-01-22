@@ -20,7 +20,7 @@ export const SocialLinks = styled.div`
 `;
 
 export const SocialLinksBar = styled.div`
-  width: 100px;
+  width: 50px;
   height: 5px;
   background: ${theme.palette.primary.main};
   margin-right: 8px;

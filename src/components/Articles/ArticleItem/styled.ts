@@ -9,13 +9,13 @@ export const CardContainer = styled.article<Props>`
   height: ${({ large }) => (large ? "auto" : "calc(215px + 117px)")};
   background: #fff;
   border: 1px solid #e4e4e4;
-  margin-top: 24px;
   cursor: pointer;
   display: flex;
   flex-direction: ${({ large }) => (large ? "row" : "column")};
 `;
 
 export const CardDetails = styled.div<Props>`
+  text-align: left;
   box-sizing: border-box;
   padding: 24px 16px 32px;
   position: ${({ large }) => (large ? "relative" : "absolute")};

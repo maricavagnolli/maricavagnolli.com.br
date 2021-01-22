@@ -61,7 +61,11 @@ function Appbar(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/" aria-label="Ir para página inicial">
+          <Link
+            to="/"
+            aria-label="Ir para página inicial"
+            style={{ display: "flex" }}
+          >
             <Logo />
           </Link>
         </Toolbar>

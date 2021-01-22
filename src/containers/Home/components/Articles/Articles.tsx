@@ -73,18 +73,19 @@ const Articles: React.FC<Props> = (props) => {
         além de alguns artigos para você melhorar cada vez mais sua qualidade de
         vida
       </p>
-      <Grid container></Grid>
-      {articles.map(({ article }: ArticleProps) => (
-        <Grid item xs={12} sm={6} md={4} key={article.id}>
-          <ArticleItem
-            title={article.frontmatter.title}
-            tag={article.frontmatter.category}
-            image={article.frontmatter.featuredImage.childImageSharp.fluid}
-            description={article.frontmatter.description}
-            slug={article.slug}
-          />
-        </Grid>
-      ))}
+      <Grid container spacing={2} style={{ marginTop: 24 }}>
+        {articles.map(({ article }: ArticleProps) => (
+          <Grid item xs={12} sm={6} md={4} key={article.id}>
+            <ArticleItem
+              title={article.frontmatter.title}
+              tag={article.frontmatter.category}
+              image={article.frontmatter.featuredImage.childImageSharp.fluid}
+              description={article.frontmatter.description}
+              slug={article.slug}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };

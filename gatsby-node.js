@@ -14,11 +14,17 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  const { data } = await graphql(`
+  const { data, errors } = await graphql(`
     query {
-      allMdx {
+      allMdx(
+        sort: { fields: frontmatter___date, order: DESC }
+        filter: {
+          fileAbsolutePath: { regex: "/posts/" }
+          frontmatter: { category: { ne: "receitas" } }
+        }
+      ) {
         edges {
           node {
             id
@@ -31,10 +37,49 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  data.allMdx.edges.forEach(({ node }) => {
-    console.log({ node: node.id });
+  if (errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  const articles = data.allMdx.edges;
+  const articlesPerPage = 6;
+  const numPages = Math.ceil(articles.length / articlesPerPage);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
-      path: `blog${node.fields.slug}`,
+      path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+      component: path.resolve("./src/templates/Blog.tsx"),
+      context: {
+        limit: articlesPerPage,
+        skip: i * articlesPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    });
+  });
+
+  const { data: allArticlesData } = await graphql(`
+    query {
+      allMdx(
+        sort: { fields: frontmatter___date, order: DESC }
+        filter: { fileAbsolutePath: { regex: "/posts/" } }
+      ) {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  allArticlesData.allMdx.edges.forEach(({ node }) => {
+    createPage({
+      path: `/blog/item${node.fields.slug}`,
       component: path.resolve("./src/templates/Post.tsx"),
       context: {
         id: node.id,
