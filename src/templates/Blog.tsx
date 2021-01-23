@@ -86,7 +86,7 @@ function Blog({ data, pageContext }: StaticQueryProps) {
                               .fluid
                           }
                           description={article.frontmatter.description}
-                          slug={article.slug}
+                          slug={article.fields.slug}
                           large={showLarge}
                         />
                       </div>
@@ -109,7 +109,7 @@ function Blog({ data, pageContext }: StaticQueryProps) {
                         article.frontmatter.featuredImage.childImageSharp.fluid
                       }
                       description={article.frontmatter.description}
-                      slug={article.slug}
+                      slug={article.fields.slug}
                     />
                   </Grid>
                 ))}
@@ -152,7 +152,7 @@ function Blog({ data, pageContext }: StaticQueryProps) {
 
 export const query = graphql`
   query($skip: Int!, $limit: Int!) {
-    recipesData: allMdx(
+    recipesData: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/posts/" }
         frontmatter: { category: { eq: "receitas" } }
@@ -163,8 +163,10 @@ export const query = graphql`
       recipes: edges {
         article: node {
           id
-          slug
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(locale: "pt-BR", formatString: "LL")
@@ -181,7 +183,7 @@ export const query = graphql`
         }
       }
     }
-    articlesData: allMdx(
+    articlesData: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/posts/" }
         frontmatter: { category: { ne: "receitas" } }
@@ -193,8 +195,10 @@ export const query = graphql`
       articles: edges {
         article: node {
           id
-          slug
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(locale: "pt-BR", formatString: "LL")

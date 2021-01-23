@@ -1,0 +1,47 @@
+backend:
+  name: github
+  repo: maricavagnolli/maricavagnolli.com.br
+  branch: master # Branch to update (optional; defaults to master)
+  site_domain: maricavagnolli.netlify.com/
+
+publish_mode: editorial_workflow
+media_folder: "posts/images"
+public_folder: "/images"
+locale: "pt-BR"
+
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Postagens" # Used in the UI
+    folder: "posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descrição", name: "description", widget: "string" }
+      - {
+          label: "Data",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD hh:mm:ss",
+        }
+      - { label: "Imagem", name: "featuredImage", widget: "image" }
+      - {
+          label: "Categoria",
+          name: "category",
+          widget: "select",
+          options:
+            [
+              "receitas",
+              "saúde",
+              "dicas",
+              "nutrição",
+              "nutrição infantil",
+              "nutrição esportiva",
+              "gestantes",
+              "alimentação",
+              "bem estar",
+              "vegetariano",
+              "vegano",
+            ],
+        }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }

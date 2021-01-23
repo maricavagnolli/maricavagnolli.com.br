@@ -24,7 +24,7 @@ function ArticleItem(props: Props) {
       ref={hoverRef}
       large={large}
       onClick={() => {
-        navigate(`/blog/item/${slug}`);
+        navigate(`/blog/item${slug}`);
       }}
     >
       <div>

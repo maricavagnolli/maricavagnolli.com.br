@@ -1,9 +1,8 @@
 import React from "react";
 import { graphql, navigate } from "gatsby";
 import { Container, Typography, Hidden, Grid, Button } from "@material-ui/core";
+import styled from "styled-components";
 
-import { MDXProvider } from "@mdx-js/react";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import Img from "gatsby-image";
 
 import Layout from "../components/Layout";
@@ -21,53 +20,62 @@ const commonProps = (text: string) => ({
   id: formatTitleId(text),
 });
 
-const globalComponents = {
-  h1: (props: any) => (
-    <Typography variant="h1" {...props} {...commonProps(props.children)} />
-  ),
-  h2: (props: any) => (
-    <Typography variant="h2" {...props} {...commonProps(props.children)} />
-  ),
-  h3: (props: any) => (
-    <Typography variant="h3" {...props} {...commonProps(props.children)} />
-  ),
-  h4: (props: any) => (
-    <Typography variant="h4" {...props} {...commonProps(props.children)} />
-  ),
-  h5: (props: any) => (
-    <Typography variant="h5" {...props} {...commonProps(props.children)} />
-  ),
-  h6: (props: any) => (
-    <Typography variant="h6" {...props} {...commonProps(props.children)} />
-  ),
-  p: (props: any) => (
-    <Typography
-      variant="body1"
-      {...props}
-      style={{ fontSize: "20px", lineHeight: "2.5rem", fontWeight: 300 }}
-      color="textPrimary"
-    />
-  ),
-  li: (props: any) => (
-    <li {...props}>
-      <Typography
-        variant="subtitle1"
-        {...props}
-        style={{ lineHeight: "2.5rem", fontWeight: 200 }}
-      />
-    </li>
-  ),
-};
+const CustomDiv = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 6rem;
+    line-height: 1.167;
+    letter-spacing: -0.01562em;
+  }
+  h2 {
+    font-size: 3.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.00833em;
+  }
+  h3 {
+    font-size: 3rem;
+    line-height: 1.167;
+    letter-spacing: 0em;
+  }
+  h4 {
+    font-size: 2.125rem;
+    line-height: 1.235;
+    letter-spacing: 0.00735em;
+  }
+  h5 {
+    font-size: 1.5rem;
+    line-height: 1.334;
+    letter-spacing: 0em;
+  }
+  h6 {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+  p {
+    font-size: 20px;
+    line-height: 2.5rem;
+    font-weight: 300;
+  }
+`;
 
-const PostTemplate = ({ data: { mdx, file }, location }: any) => {
-  const featuredImgFluid = mdx.frontmatter.featuredImage.childImageSharp.fluid;
-  const hasSections = Boolean(mdx.frontmatter.sections.length);
+const PostTemplate = ({ data: { markdownRemark, file }, location }: any) => {
+  const featuredImgFluid =
+    markdownRemark.frontmatter.featuredImage.childImageSharp.fluid;
 
   return (
     <Layout>
       <SEO
-        title={mdx.frontmatter.title}
-        description={mdx.frontmatter.description}
+        title={markdownRemark.frontmatter.title}
+        description={markdownRemark.frontmatter.description}
         image={featuredImgFluid.src}
       />
       <Container maxWidth="md" style={{ marginTop: 96 }}>
@@ -84,28 +92,21 @@ const PostTemplate = ({ data: { mdx, file }, location }: any) => {
           color="textPrimary"
           style={{ fontWeight: 500 }}
         >
-          {mdx.frontmatter.title}
+          {markdownRemark.frontmatter.title}
         </Typography>
         <Img
           fluid={featuredImgFluid}
           style={{ maxHeight: 370, marginTop: 56 }}
         />
         <Grid container style={{ marginTop: 56 }}>
-          {hasSections && (
-            <Hidden xsDown>
-              <Grid item xs={3}>
-                <SectionTable sections={mdx.frontmatter.sections} />
-              </Grid>
-            </Hidden>
-          )}
-          <Grid item xs={12} sm={hasSections ? 9 : 12}>
-            <MDXProvider components={globalComponents}>
-              <MDXRenderer>{mdx.body}</MDXRenderer>
-            </MDXProvider>
+          <Grid item xs={12}>
+            <CustomDiv
+              dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
+            />
             <ShareArticle
               link={location.href}
-              title={mdx.frontmatter.title}
-              description={mdx.frontmatter.description}
+              title={markdownRemark.frontmatter.title}
+              description={markdownRemark.frontmatter.description}
             />
             <AuthorDetails profilePhoto={file.childImageSharp.fixed} />
           </Grid>
@@ -124,17 +125,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    mdx(id: { eq: $id }) {
+    markdownRemark(id: { eq: $id }) {
       id
-      body
+      html
       timeToRead
       frontmatter {
         date(locale: "pt-BR", fromNow: true)
         title
-        sections {
-          id
-          title
-        }
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 1914) {

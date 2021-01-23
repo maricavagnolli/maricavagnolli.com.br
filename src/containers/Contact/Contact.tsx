@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, TextField } from "@material-ui/core";
+import { Container, Grid, TextField, Snackbar } from "@material-ui/core";
 import { GatsbyImageFixedProps } from "gatsby-image";
 import CustomContainer from "../../components/Container";
 import SocialNetwork from "../../components/SocialNetwork";
@@ -11,12 +11,23 @@ interface Props {
 
 type StatusProps = {
   status: "EMPTY" | "SUCCESS" | "ERROR";
+  message: string | null;
 };
 
 function Contact({ profilePhoto }: Props) {
+  const [open, setOpen] = React.useState(false);
   const [emailStatus, setEmailStatus] = React.useState<StatusProps>({
     status: "EMPTY",
+    message: null,
   });
+
+  const handleClose = (
+    event: React.SyntheticEvent | React.MouseEvent,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") return;
+    setOpen(false);
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,10 +40,17 @@ function Contact({ profilePhoto }: Props) {
       if (xhr.readyState !== XMLHttpRequest.DONE) return;
       if (xhr.status === 200) {
         form.reset();
-        setEmailStatus({ status: "SUCCESS" });
+        setEmailStatus({
+          status: "SUCCESS",
+          message: "E-mail enviado com sucesso!",
+        });
       } else {
-        setEmailStatus({ status: "ERROR" });
+        setEmailStatus({
+          status: "ERROR",
+          message: "Houve um erro ao enviar o e-mail, tente novamente!",
+        });
       }
+      setOpen(true);
     };
     xhr.send(data);
   };
@@ -42,6 +60,7 @@ function Contact({ profilePhoto }: Props) {
         withContainer
         withPadding
         title="Contatos"
+        titleSize="md"
         color="transparent"
       >
         <Grid container spacing={2}>
@@ -119,6 +138,16 @@ function Contact({ profilePhoto }: Props) {
           </Grid>
         </Grid>
       </CustomContainer>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={emailStatus.message}
+      />
     </Container>
   );
 }

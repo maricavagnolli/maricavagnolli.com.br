@@ -12,7 +12,9 @@ export type ArticleProps = {
   article: {
     id: string;
     timeToRead: number;
-    slug: string;
+    fields: {
+      slug: string;
+    };
     frontmatter: {
       title: string;
       date: string;
@@ -27,7 +29,7 @@ export type ArticleProps = {
 
 const articlesQuery = graphql`
   query GetArticles {
-    data: allMdx(
+    data: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/posts/" } }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 3
@@ -35,8 +37,10 @@ const articlesQuery = graphql`
       articles: edges {
         article: node {
           id
-          slug
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(locale: "pt-BR", formatString: "LL")
@@ -82,7 +86,7 @@ const Articles: React.FC<Props> = (props) => {
               tag={article.frontmatter.category}
               image={article.frontmatter.featuredImage.childImageSharp.fluid}
               description={article.frontmatter.description}
-              slug={article.slug}
+              slug={article.fields.slug}
             />
           </Grid>
         ))}

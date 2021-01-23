@@ -1,13 +1,32 @@
 import * as React from "react";
 import { Transition } from "react-transition-group";
-import Typography from "@material-ui/core/Typography";
 import { Link } from "gatsby";
 import * as Styled from "./styled";
 import SocialNetwork from "../../SocialNetwork";
+import theme from "../../../styles/theme";
 
 const menuItems = [
-  { label: "Início", route: "/", id: "home", transitionDuration: 1000 },
-  { label: "Blog", route: "/blog", id: "blog", transitionDuration: 1250 },
+  {
+    label: "Início",
+    route: "/",
+    id: "home",
+    transitionDuration: 1000,
+    partiallyActive: false,
+  },
+  {
+    label: "Blog",
+    route: "/blog/",
+    id: "blog",
+    transitionDuration: 1250,
+    partiallyActive: true,
+  },
+  {
+    label: "Contato",
+    route: "/contato/",
+    id: "contato",
+    transitionDuration: 1500,
+    partiallyActive: false,
+  },
 ];
 
 const getDefaultStyle = (duration: number) => ({
@@ -41,41 +60,46 @@ function Menu({ transitionState }: any) {
           )}
         </Transition>
       </div>
-      {menuItems.map(({ label, route, id, transitionDuration }) => (
-        <div
-          key={id}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            margin: "8px 0",
-            height: "56px",
-          }}
-        >
-          <Transition in={inProp} timeout={300}>
-            {(state) => (
-              <Styled.MenuItem
-                style={{
-                  ...getDefaultStyle(transitionDuration),
-                  ...transitionStyles[state],
-                }}
-              >
-                <Link
-                  to={route}
-                  style={{ textDecoration: "none", color: "black" }}
+      {menuItems.map(
+        ({ label, route, id, transitionDuration, partiallyActive }) => (
+          <div
+            key={id}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              margin: "8px 0",
+              height: "56px",
+            }}
+          >
+            <Transition in={inProp} timeout={300}>
+              {(state) => (
+                <Styled.MenuItem
+                  style={{
+                    ...getDefaultStyle(transitionDuration),
+                    ...transitionStyles[state],
+                  }}
                 >
-                  <Typography
-                    variant="h4"
-                    color="textPrimary"
-                    style={{ fontFamily: "Roboto" }}
+                  <Link
+                    partiallyActive={partiallyActive}
+                    activeStyle={{ color: theme.palette.primary.main }}
+                    to={route}
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                      fontSize: "2.125rem",
+                      fontWeight: 400,
+                      lineHeight: "1.235",
+                      letterSpacing: "0.00735em",
+                    }}
                   >
                     {label}
-                  </Typography>
-                </Link>
-              </Styled.MenuItem>
-            )}
-          </Transition>
-        </div>
-      ))}
+                  </Link>
+                </Styled.MenuItem>
+              )}
+            </Transition>
+          </div>
+        )
+      )}
     </Styled.Menu>
   );
 }

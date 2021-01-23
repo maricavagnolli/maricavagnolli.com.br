@@ -11,7 +11,7 @@ interface Props {}
 
 const query = graphql`
   query GetRecipesAndArticles {
-    recipesData: allMdx(
+    recipesData: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/posts/" }
         frontmatter: { category: { eq: "receitas" } }
@@ -22,8 +22,10 @@ const query = graphql`
       recipes: edges {
         article: node {
           id
-          slug
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(locale: "pt-BR", formatString: "LL")
@@ -40,7 +42,7 @@ const query = graphql`
         }
       }
     }
-    articlesData: allMdx(
+    articlesData: allMarkdownRemark(
       filter: {
         fileAbsolutePath: { regex: "/posts/" }
         frontmatter: { category: { ne: "receitas" } }
@@ -50,8 +52,10 @@ const query = graphql`
       articles: edges {
         article: node {
           id
-          slug
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date(locale: "pt-BR", formatString: "LL")
@@ -129,7 +133,7 @@ function Blog(props: Props) {
                             .fluid
                         }
                         description={article.frontmatter.description}
-                        slug={article.slug}
+                        slug={article.fields.slug}
                         large
                       />
                     </div>
@@ -152,7 +156,7 @@ function Blog(props: Props) {
                       article.frontmatter.featuredImage.childImageSharp.fluid
                     }
                     description={article.frontmatter.description}
-                    slug={article.slug}
+                    slug={article.fields.slug}
                   />
                 </Grid>
               ))}

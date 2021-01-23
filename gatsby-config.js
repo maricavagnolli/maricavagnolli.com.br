@@ -26,7 +26,6 @@ module.exports = {
     "gatsby-plugin-offline",
     "gatsby-transformer-remark",
     "gatsby-remark-images",
-    "gatsby-plugin-mdx",
     "gatsby-transformer-sharp",
     {
       resolve: `gatsby-source-filesystem`,
@@ -43,19 +42,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: "gatsby-transformer-remark",
       options: {
-        gatsbyRemarkPlugins: [
+        plugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
             },
           },
-        ],
-        defaultLayouts: {
-          default: require.resolve("./src/templates/Post.tsx"),
-        },
+        ], // just in case those previously mentioned remark plugins sound cool :)
       },
     },
     {
@@ -118,21 +114,25 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map((edge) => {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map((edge) => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.frontmatter.description,
                   date: edge.node.frontmatter.date,
                   url:
-                    site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
+                    site.siteMetadata.siteUrl +
+                    "/blog/item" +
+                    edge.node.fields.slug,
                   guid:
-                    site.siteMetadata.siteUrl + "/blog" + edge.node.fields.slug,
+                    site.siteMetadata.siteUrl +
+                    "/blog/item" +
+                    edge.node.fields.slug,
                 });
               });
             },
             query: `
               {
-                allMdx(
+                allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
                 ) {
                   edges {

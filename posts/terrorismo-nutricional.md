@@ -4,14 +4,6 @@ title: Terrorismo Nutricional
 category: saúde
 featuredImage: ./images/terrorismo-nutricional.jpg
 description: Vamos entender um pouco mais se realmente existem alimentos vilões e receitas milagrosas para perder peso.
-sections:
-  [
-    { id: "introdução", title: "Introdução" },
-    {
-      id: "superando-o-terrorismo-nutricional",
-      title: "Superando o terrorismo nutricional",
-    },
-  ]
 ---
 
 ##### Introdução

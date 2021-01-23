@@ -4,7 +4,7 @@ const path = require(`path`);
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === "Mdx") {
+  if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode });
     createNodeField({
       node,
@@ -18,7 +18,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const { data, errors } = await graphql(`
     query {
-      allMdx(
+      allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
         filter: {
           fileAbsolutePath: { regex: "/posts/" }
@@ -42,7 +42,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const articles = data.allMdx.edges;
+  const articles = data.allMarkdownRemark.edges;
   const articlesPerPage = 6;
   const numPages = Math.ceil(articles.length / articlesPerPage);
 
@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const { data: allArticlesData } = await graphql(`
     query {
-      allMdx(
+      allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
         filter: { fileAbsolutePath: { regex: "/posts/" } }
       ) {
@@ -77,7 +77,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  allArticlesData.allMdx.edges.forEach(({ node }) => {
+  allArticlesData.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: `/blog/item${node.fields.slug}`,
       component: path.resolve("./src/templates/Post.tsx"),
