@@ -30,14 +30,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `uploads`,
-        path: `./static/assets/img`,
+        path: `${__dirname}/static/assets/img`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `./posts`,
+        path: `${__dirname}/posts`,
       },
     },
     {
@@ -54,12 +54,12 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
+              linkImagesToOriginal: false,
             },
           },
         ], // just in case those previously mentioned remark plugins sound cool :)
       },
     },
-    "gatsby-plugin-netlify-cms",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -167,5 +167,6 @@ module.exports = {
         ],
       },
     },
+    "gatsby-plugin-netlify-cms",
   ],
 };

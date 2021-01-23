@@ -21,6 +21,7 @@ export const CardDetails = styled.div<Props>`
   position: ${({ large }) => (large ? "relative" : "absolute")};
   background: #ffffff;
   height: ${({ large }) => (large ? "100%" : "auto")};
+  width: 100%;
 
   ${({ large }) =>
     !large &&
