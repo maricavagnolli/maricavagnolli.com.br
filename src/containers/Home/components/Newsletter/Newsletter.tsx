@@ -57,20 +57,21 @@ function Newsletter(props: Props) {
   const [result, setResult] = React.useState<
     "success" | "error" | "warning" | ""
   >("");
+  console.log({ resultState: result });
   const [sending, setSending] = React.useState<boolean>(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
     try {
       setSending(true);
-      const elements = (event.currentTarget
-        .elements as unknown) as FormElements;
+      const elements = (form.elements as unknown) as FormElements;
       const email = elements.email.value;
       const name = elements.name.value;
       const { result } = await addToMailChimp(email, { FNAME: name });
-      event.currentTarget.reset();
       setResult(result);
-    } catch {
+      form.reset();
+    } catch (error) {
       setResult("error");
     } finally {
       setSending(false);
