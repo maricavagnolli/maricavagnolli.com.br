@@ -11,7 +11,6 @@ module.exports = {
     author: "Nutricionista Mariana Cavagnolli",
   },
   plugins: [
-    "gatsby-plugin-netlify-cms",
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
@@ -30,15 +29,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
-        path: `./posts`,
+        name: `uploads`,
+        path: `./static/assets/img`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `uploads`,
-        path: `./static/assets/img`,
+        name: `posts`,
+        path: `./posts`,
       },
     },
     {
@@ -60,6 +59,7 @@ module.exports = {
         ], // just in case those previously mentioned remark plugins sound cool :)
       },
     },
+    "gatsby-plugin-netlify-cms",
     {
       resolve: "gatsby-source-filesystem",
       options: {

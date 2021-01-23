@@ -5,9 +5,8 @@ backend:
   site_domain: maricavagnolli.netlify.com/
 
 publish_mode: editorial_workflow
-media_folder: "static/assets/img"
-public_folder: "assets/img"
-locale: "pt-BR"
+media_folder: static/assets/img
+public_folder: assets/img
 
 collections:
   - name: "posts" # Used in routes, e.g., /admin/collections/blog
