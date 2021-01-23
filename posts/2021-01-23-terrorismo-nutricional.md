@@ -2,7 +2,7 @@
 date: 2020-02-26 22:53:00
 title: Terrorismo Nutricional
 category: saúde
-featuredImage: ./images/terrorismo-nutricional.jpg
+featuredImage: "/assets/img/terrorismo-nutricional.jpg"
 description: Vamos entender um pouco mais se realmente existem alimentos vilões e receitas milagrosas para perder peso.
 ---
 

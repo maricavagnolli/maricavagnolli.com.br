@@ -38,13 +38,19 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `uploads`,
-        path: `./posts/images`,
+        path: `./static/assets/img`,
       },
     },
     {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-relative-images`,
+            options: {
+              name: "uploads",
+            },
+          },
           {
             resolve: `gatsby-remark-images`,
             options: {
