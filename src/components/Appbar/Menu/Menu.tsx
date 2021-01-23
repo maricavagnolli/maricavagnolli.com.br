@@ -63,7 +63,11 @@ function Menu({ transitionState }: any) {
                   to={route}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  <Typography variant="h4" color="textPrimary">
+                  <Typography
+                    variant="h4"
+                    color="textPrimary"
+                    style={{ fontFamily: "Roboto" }}
+                  >
                     {label}
                   </Typography>
                 </Link>

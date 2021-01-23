@@ -1,8 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImageFixedProps } from "gatsby-image";
-import BusinessCard from "../containers/BusinessCard";
+import Contact from "../containers/Contact";
 import SEO from "../components/seo";
+import Layout from "../components/Layout";
 
 interface Props {
   data: {
@@ -15,10 +16,10 @@ interface Props {
 function ContactPage({ data }: Props) {
   const { file } = data;
   return (
-    <>
+    <Layout>
       <SEO title="Entre em contato" />
-      <BusinessCard profilePhoto={file.childImageSharp} />
-    </>
+      <Contact profilePhoto={file.childImageSharp} />
+    </Layout>
   );
 }
 

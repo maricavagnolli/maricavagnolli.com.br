@@ -75,9 +75,7 @@ const PostTemplate = ({ data: { mdx, file }, location }: any) => {
           variant="text"
           color="primary"
           style={{ marginBottom: 16 }}
-          onClick={() => {
-            navigate("/");
-          }}
+          onClick={() => navigate(-1)}
         >
           Voltar
         </Button>

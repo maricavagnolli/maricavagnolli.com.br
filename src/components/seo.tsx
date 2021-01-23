@@ -1,12 +1,4 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react";
-import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
@@ -75,28 +67,39 @@ function SEO({ description, lang = "pt-BR", title, image }: Props) {
         { name: `twitter:description`, content: seo.description },
         { name: `twitter:image:alt`, content: seo.description },
       ]}
+      link={[
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          title: "Nutricionista Mari Cavagnolli",
+          href: "/feed.xml",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+        {
+          rel: "preload",
+          as: "style",
+          href:
+            "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Sacramento&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&family=Sacramento&display=swap",
+          media: "print",
+          onLoad: 'this.media = "all"' as any,
+        },
+      ]}
     >
-      <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="Nutricionista Mariana Cavagnolli"
-        href="/feed.xml"
-      />
+      <noscript>{`
+        <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" />
+      `}</noscript>
     </Helmet>
   );
 }
-
-SEO.defaultProps = {
-  lang: `pt-BR`,
-  meta: [],
-  description: ``,
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-};
 
 export default SEO;

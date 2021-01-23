@@ -1,9 +1,10 @@
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 import { GatsbyImageFluidProps } from "gatsby-image";
 import { Grid } from "@material-ui/core";
 import ArticleItem from "../../../../components/Articles/ArticleItem";
 import Container from "../../../../components/Container";
+import Button from "../../../../components/Button";
 
 interface Props {}
 
@@ -85,6 +86,19 @@ const Articles: React.FC<Props> = (props) => {
             />
           </Grid>
         ))}
+        <Grid
+          item
+          xs={12}
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate("/blog")}
+          >
+            Ver todos os artigos
+          </Button>
+        </Grid>
       </Grid>
     </Container>
   );
