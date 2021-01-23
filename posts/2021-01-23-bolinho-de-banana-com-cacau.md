@@ -2,7 +2,7 @@
 title: Bolinho de banana com cacau
 description: Uma receita muito gostosa para quem busca uma sobremesa saudável.
 date: 2021-01-23 03:45:33
-featuredImage: /assets/img/bolo-banana-cacau.jfif
+featuredImage: /assets/img/anastasia-eremina-qsxkdzhkgvi-unsplash.jpg
 category: receitas
 ---
 ##### Descrição
