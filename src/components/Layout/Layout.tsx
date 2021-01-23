@@ -8,7 +8,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div>
       <Appbar />
-      {children}
+      <div style={{ minHeight: "calc(100vh - 168px)" }}>{children}</div>
       <Footer />
     </div>
   );

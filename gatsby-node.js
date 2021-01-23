@@ -16,6 +16,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+
+  // create a blog list for recipes and articles
   const { data, errors } = await graphql(`
     query {
       allMarkdownRemark(
@@ -59,6 +61,51 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
+  // create a recipes list page
+  const { data: recipeData, errors: recipeErrors } = await graphql(`
+    query {
+      allMarkdownRemark(
+        sort: { fields: frontmatter___date, order: DESC }
+        filter: {
+          fileAbsolutePath: { regex: "/posts/" }
+          frontmatter: { category: { eq: "receitas" } }
+        }
+      ) {
+        recipes: edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (recipeErrors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  const { recipes } = recipeData.allMarkdownRemark;
+  const recipesPerPage = 1;
+  const recipesNumPages = Math.ceil(recipes.length / recipesPerPage);
+
+  Array.from({ length: recipesNumPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/receitas` : `/receitas/${i + 1}`,
+      component: path.resolve("./src/templates/Recipes.tsx"),
+      context: {
+        limit: recipesPerPage,
+        skip: i * recipesPerPage,
+        numPages: recipesNumPages,
+        currentPage: i + 1,
+      },
+    });
+  });
+
+  // Create a page for each post
   const { data: allArticlesData } = await graphql(`
     query {
       allMarkdownRemark(

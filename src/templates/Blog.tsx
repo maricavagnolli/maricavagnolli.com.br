@@ -29,6 +29,8 @@ type StaticQueryProps = {
   };
 };
 
+const customStyles = { display: "flex", justifyContent: "flex-end" };
+
 function Blog({ data, pageContext }: StaticQueryProps) {
   const {
     recipesData: { recipes },
@@ -63,8 +65,18 @@ function Blog({ data, pageContext }: StaticQueryProps) {
           <Grid container style={{ marginTop: 56 }} spacing={4}>
             {hasRecipes && (
               <>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                   <Typography variant="h5">Receitas</Typography>
+                </Grid>
+                <Grid item xs={6} style={customStyles}>
+                  <Button
+                    onClick={() => {
+                      navigate("/receitas");
+                    }}
+                    variant="text"
+                  >
+                    Ver mais receitas
+                  </Button>
                 </Grid>
                 <Grid item xs={12}>
                   <Carousel
@@ -125,11 +137,7 @@ function Blog({ data, pageContext }: StaticQueryProps) {
                     </Button>
                   )}
                 </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  style={{ display: "flex", justifyContent: "flex-end" }}
-                >
+                <Grid item xs={6} style={customStyles}>
                   {!isFirstPage && (
                     <Button
                       variant="text"
