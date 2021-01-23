@@ -2,7 +2,7 @@ backend:
   name: github
   repo: maricavagnolli/maricavagnolli.com.br
   branch: master # Branch to update (optional; defaults to master)
-  site_domain: maricavagnolli.netlify.com/
+  site_domain: maricavagnolli.com.br
 
 publish_mode: editorial_workflow
 media_folder: "static/assets/img"
