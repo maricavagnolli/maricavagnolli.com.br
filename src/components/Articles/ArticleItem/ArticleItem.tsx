@@ -37,7 +37,13 @@ function ArticleItem(props: Props) {
           }}
         />
       </div>
-      <div style={{ position: "relative", height: large ? "auto" : 117 }}>
+      <div
+        style={{
+          position: "relative",
+          height: large ? "auto" : 117,
+          width: "100%",
+        }}
+      >
         <Styled.CardDetails large={large}>
           <Typography
             variant="subtitle2"
