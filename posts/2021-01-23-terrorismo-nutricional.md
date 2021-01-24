@@ -14,9 +14,6 @@ A realidade é que não existe alimento que faz bem ou mal, shakes milagrosos ou
 
 Na verdade eles podem ter emagrecido porque junto a dieta eles diminuíram drasticamente a quantidade de alimentos, ou começaram a praticar algum exercício físico. Isso não significa que a dieta foi benéfica, somente que um fator externo ajudou com essa perda de peso e também não justifica que essa perda de peso foi da forma correta e segura.
 
-<br />
-<br />
-
 ##### Superando o terrorismo nutricional
 
 Hoje em dia as pessoas têm medo da comida e o medo de engordar faz com que elas procurem várias formas de perder peso. No entanto, esta procura é feita de modo errado. Uma dieta ou uma reeducação alimentar deve ser feita individualmente, levando em consideração a idade, sexo, peso, patologias e o estilo de vida. Por exemplo: duas pessoas pegam uma dieta sem glúten na internet de 2500 kcal. Mas uma pratica atividade física diariamente e trabalha andando de um lado pra outro e a outra é sedentária e não pratica exercício. Com certeza a primeira vai manter ou perder seu peso. Em contrapartida, a segunda claramente vai engordar. A primeira vai achar que realmente o glúten é o vilão da história e agora sem ele a vida vai ser melhor (por mais que isso não seja verdade), enquanto a segunda vai começar a cortar o glúten e a lactose para ver se surge algum efeito, por que só o glúten não foi suficiente e ficará nesse looping infinito atrás de dietas da moda e alimentos vilões contra o emagrecimento.

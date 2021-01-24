@@ -29,6 +29,7 @@ const CustomDiv = styled.div`
   h6 {
     font-weight: 500;
     margin-bottom: 1rem;
+    margin-top: 3rem;
   }
   h1 {
     font-size: 6rem;
