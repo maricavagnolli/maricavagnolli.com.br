@@ -24,15 +24,15 @@ Essa terapia alternativa (traduzida para o português como atenção plena) se m
 
 ###### A) Micronutrientes:
 
-* Vitaminas do complexo B: Sua deficiência causa ansiedade, depressão, estresse e nervosismo.
+**Vitaminas do complexo B: Sua deficiência causa ansiedade, depressão, estresse e nervosismo.**
 
 Alimentos-fonte: abacate, oleaginosas, brócolis, alimentos de origem animal (como carnes, ovos, leite e derivados), frutos do mar, sementes, cereais integrais, entre outros.
 
-* Magnésio: Estudos experimentais e em humanos concluíram que sua deficiência leva ao aumento expressivo da ansiedade, podendo inclusive reduzir a eficácia de ansiolíticos e antidepressivos.
+**Magnésio: Estudos experimentais e em humanos concluíram que sua deficiência leva ao aumento expressivo da ansiedade, podendo inclusive reduzir a eficácia de ansiolíticos e antidepressivos.**
 
 Alimentos-fonte: uva, banana, abacate, grãos, cereais integrais, nozes, gergelim, amendoim, semente de girassol, semente de abóbora, castanha-de-caju, leite e derivados, peixes como o salmão, beterraba, couve, espinafre, entre outros.
 
-* Zinco: Essencial no funcionamento do cérebro, e vem sendo muito estudado pelo seu poder ansiolítico.
+**Zinco: Essencial no funcionamento do cérebro, e vem sendo muito estudado pelo seu poder ansiolítico.**
 
 Alimentos-fonte: chocolate amargo, linhaça, semente de abóbora, semente de melancia, ostra, camarão, lagosta, gema de ovo, leite e derivados, amendoim, castanha-de-caju, feijão, carne bovina, frango, espinafre, entre outros.
 
@@ -42,7 +42,7 @@ Uso na prevenção e tratamento da TAG (transtorno de ansiedade generalizada);
 
 Alimentos-fonte: frutas cítricas, maçãs, ameixas, cerejas, feijões, nozes, alcachofras, couve, espinafre, beterraba, brócolis e especiarias como açafrão (cúrcuma), gengibre e canela.
 
-###### C)Carboidratos:
+###### C) Carboidratos:
 
 A escolha por carboidratos de baixo índice glicêmico (IG) ajudará a manter os níveis de glicose no sangue estáveis e a manter a disposição durante todo o dia. Por outro lado, alimentos e bebidas com alto IG (como doces e bebidas açucaradas) são absorvidos rapidamente, especialmente se ingeridos com o estômago vazio, criando picos e quedas de glicose, que podem contribuir para os sintomas de ansiedade.
 
@@ -52,12 +52,12 @@ Acido graxo que tem papel ansiolítico importante.
 
 Alimentos-fonte: peixes gordos (como arenque, atum, salmão e sardinha), azeite de oliva, sementes e oleaginosas.
 
-
-
 ###### E) Proteínas (triptofano e tirosina):
 
 O triptofano é o aminoácido essencial responsável pela produção da serotonina, enquanto a tirosina é precursora da dopamina. A deficiência desses dois aminoácidos essenciais prejudica a síntese desses neurotransmissores, aumentando as chances de desenvolver TAG.
 
 Alimentos-fonte de proteínas de alta qualidade: carnes magras, ovos, leite desnatado e seus derivados, cogumelos, grãos, entre outros.
+
+
 
 COLUNISTAS CONVIDADOS. Estratégias nutricionais no combate à ansiedade. In: NUTRITOTAL. Estratégias nutricionais no combate à ansiedade. \[S. l.], 14 mar. 2020. Disponível em: [](https://nutritotal.com.br/publico-geral/colunas/alimentacao-no-combate-a-ansiedade/)<https://nutritotal.com.br/publico-geral/colunas/alimentacao-no-combate-a-ansiedade/>. Acesso em: 21 fev. 2021.
