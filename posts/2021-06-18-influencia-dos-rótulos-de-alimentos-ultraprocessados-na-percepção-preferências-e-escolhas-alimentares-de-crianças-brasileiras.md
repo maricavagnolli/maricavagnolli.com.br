@@ -1,8 +1,7 @@
 ---
-title: Influencia dos rótulos de alimentos ultraprocessados na percepção,
-  preferências e escolhas alimentares de crianças brasileiras
-description: Os padrões alimentares dos brasileiros mudaram radicalmente, mas
-  como as escolhas alimentares são influenciadas pelos rótulos e embalagens?
+title: Influência do rótulo alimentar na escolha das crianças
+description: Qual a influência dos rótulos de alimentos ultraprocessados na
+  percepção, preferências e escolhas alimentares de crianças brasileiras
 date: 2021-06-18 01:33:41
 featuredImage: /assets/img/joshua-rawson-harris-ynasz-e7qss-unsplash.jpg
 category: saúde
